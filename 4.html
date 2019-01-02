@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>ECharts</title>
+  <!-- 引入 echarts.js -->
+  <script src="echarts.min.js"></script>
+</head>
+
+<body>
+  <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+  <div id="main" style="width: 600px;height:400px;"></div>
+  <script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+var data0 = [30, 20, 10, 40, 50, 40, 20];
+var data1= [null, null, null, null,null, null, 20];
+var data = [0, 0, 0, 0, 0, 0, 20];
+var xdata = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+var option = {
+grid: {
+left: 30,
+right: 50,
+top: 50,
+bottom: 30,
+containLabel: true
+},
+xAxis: {
+type: 'category',
+// boundaryGap: false,
+data: xdata,
+triggerEvent: true,
+splitLine: {
+show: false
+},
+axisLine: {
+show: false,
+lineStyle: {
+width: 2,
+color: 'rgba(255,255,255,.6)'
+}
+},
+axisTick: {
+show: false
+},
+axisLabel: {
+show: false,
+color: '#fff',
+fontSize: 16,
+fontWeight: 'bold',
+textShadowColor: '#000',
+textShadowOffsetY: 2
+}
+},
+yAxis: {
+/* name: '单位（千）', */
+/* nameTextStyle: {
+color: '#fff',
+fontSize: 16,
+textShadowColor: '#000',
+textShadowOffsetY: 2
+}, */
+type: 'value',
+splitLine: {
+show: false,
+lineStyle: {
+color: 'rgba(255,255,255,.2)'
+}
+},
+axisLine: {
+show: false,
+lineStyle: {
+width: 2,
+color: 'rgba(255,255,255,.6)'
+}
+},
+axisTick: {
+show: false
+},
+axisLabel: {
+show: false,
+color: '#fff',
+fontSize: 16,
+textShadowColor: '#000',
+textShadowOffsetY: 2
+}
+},
+series: [{
+data: data0,
+type: 'line',
+/* symbol: 'circle', */
+symbol: 'none',
+symbolSize: 12,
+/* color: '#FEC201', */
+color: ['red'],
+itemStyle: {
+normal: {
+lineStyle: {
+width: 3, //折线宽度
+},
+color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+offset: 1,
+color: '#fbfa96' // 0% 处的颜色
+}, {
+offset: 0,
+color: '#f72806' // 100% 处的颜色
+}], false),
+opacity: 0.4
+}
+},
+lineStyle: {
+color: "#03E0F2"
+},
+label: {
+show: true,
+position: 'top',
+textStyle: {
+color: '#FEC201',
+fontSize: 18,
+fontWeight: 'bold'
+}
+},
+/* areaStyle: {
+color: 'rgba(1,98,133,0.6)'
+} */
+}, 
+{
+data: data1,
+type: 'line',
+/* symbol: 'circle', */
+symbolSize: 16,
+color: 'green',
+lineStyle: {
+color: "#03E0F2"
+},
+/* label: {
+show: true,
+position: 'top',
+textStyle: {
+color: '#FEC201',
+fontSize: 18,
+fontWeight: 'bold'
+}
+}, */
+/* areaStyle: {
+color: 'rgba(1,98,133,0.6)'
+} */
+},
+{
+type: 'bar',
+animation: false,
+barWidth: 2,
+hoverAnimation: false,
+data: data,
+tooltip: {
+show: false
+},
+itemStyle: {
+normal: {
+  color:'gray',
+/* color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0,
+color: '#91EAF2' 
+}, {
+offset: 1,
+color: '#074863' 
+}],
+globalCoord: false 
+}, */
+label: {
+show: false
+}
+}
+}
+}]
+}
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+  </script>
+</body>
+
+</html>
